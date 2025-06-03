@@ -25,7 +25,6 @@ stopt  = min([Supply.Timeinfo.End, Demand.Timeinfo.End]);
 %% System parameters
 
 % transport from supply
-aSupplyTransport = 0.01; % Dissipation coefficient
 etaTransformer = 0.98;     % Transformer efficiency [-]
 Length = 28;               % Cable length [km]
 LengthTwo = 0.5;            % Cable length [km]
@@ -33,13 +32,12 @@ Rprime = 3e-2;              % Resistance per unit length [Ω/km]
 V = 765e3;                  % Line voltage [V]
 
 % injection system
-aInjection = 0.1; % Dissipation coefficient
 n = 1.4; % Adiabatic index for air
 eta_comp_motor = 0.9; % Compressor motor efficiency
 eta_isentropic_comp = 0.9; % Isentropic efficiency of compressor
 cp_air = 1005; % Specific heat capacity of air [J/kg.K]
 cp_water = 4180; % Specific heat capacity of water [J/kg.K]
-epsilon_HX = 0.7; % Heat exchanger effectiveness
+epsilon_HX = 0.9; % Heat exchanger effectiveness
 R_air = 287; % Gas constant for air [J/kg.K]
 T_atm = 290; % Ambient temperature [K]
 P_atm = 1e5; % Atmospheric pressure [Pa]
@@ -48,13 +46,10 @@ T_water_max = 453; % Max water temperature for cooling [K]
 
 
 % storage system
-EStorageMax     = 10.*unit("kWh"); % Maximum energy
+EStorageMax     = 800.*unit("kWh"); % Maximum energy
 EStorageMin     = 0.0*unit("kWh"); % Minimum energy
 EStorageInitial = 2.0*unit("kWh"); % Initial energy
-bStorage        = 1e-6/unit("s");  % Storage dissipation coefficient
+bStorage        = 1e-8/unit("s");  % Storage dissipation coefficient
 
 % extraction system
-aExtraction = 0.1; % Dissipation coefficient
-
-% transport to demand
-aDemandTransport = 0.01; % Dissipation coefficient
+aExtraction = 0.15; % Dissipation coefficient
