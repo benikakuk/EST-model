@@ -34,6 +34,18 @@ V = 765e3;                  % Line voltage [V]
 
 % injection system
 aInjection = 0.1; % Dissipation coefficient
+n = 1.4; % Adiabatic index for air
+eta_comp_motor = 0.9; % Compressor motor efficiency
+eta_isentropic_comp = 0.9; % Isentropic efficiency of compressor
+cp_air = 1005; % Specific heat capacity of air [J/kg.K]
+cp_water = 4180; % Specific heat capacity of water [J/kg.K]
+epsilon_HX = 0.7; % Heat exchanger effectiveness
+R_air = 287; % Gas constant for air [J/kg.K]
+T_atm = 290; % Ambient temperature [K]
+P_atm = 1e5; % Atmospheric pressure [Pa]
+T_coolant_in = 333; % Coolant inlet temperature [K]
+T_water_max = 453; % Max water temperature for cooling [K]
+
 
 % storage system
 EStorageMax     = 10.*unit("kWh"); % Maximum energy
