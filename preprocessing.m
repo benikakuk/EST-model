@@ -26,6 +26,11 @@ stopt  = min([Supply.Timeinfo.End, Demand.Timeinfo.End]);
 
 % transport from supply
 aSupplyTransport = 0.01; % Dissipation coefficient
+etaTransformer = 0.98;     % Transformer efficiency [-]
+Length = 28;               % Cable length [km]
+LengthTwo = 0.5;            % Cable length [km]
+Rprime = 3e-2;              % Resistance per unit length [Ω/km]
+V = 765e3;                  % Line voltage [V]
 
 % injection system
 aInjection = 0.1; % Dissipation coefficient
