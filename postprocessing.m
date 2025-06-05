@@ -73,3 +73,38 @@ pie(ax, [EDirect, EfromExtraction, EBuy]/EtoDemandTransport);
 lgd = legend({"Direct from supply", "From storage", "Bought"});
 lgd.Layout.Tile = "south";
 title(sprintf("Delivered energy %3.2e [J]", EtoDemandTransport/unit('J')));
+
+%% ============== DISPLAY RESULTS Expansion ===========================================================================
+fprintf('=== SYSTEM OUTPUTS ===\n');
+fprintf('Total Power Delivered (PtoExtraction): %.2f kW\n', PtoExtraction);
+fprintf('Power Deficit (DExtraction): %.2f kW\n', DExtraction);
+fprintf('Air Mass Flow Rate: %.3f kg/s\n', m_dot_air);
+fprintf('Total Cooling Water Flow: %.3f kg/s\n\n', m_dot_water_total);
+
+%% ============== TABULATE STAGE-WISE OUTPUTS ===================
+Stage = (1:3)';  % Adjust if different number of stages
+T_after_reheat = T_TES';
+T_after_expansion = T_out';
+P_out_bar = P_out' / 1e5;          % Convert Pa to bar
+W_exp_kJ = W_exp' / 1000;          % Convert to kJ/kg
+Ex_thermal_kJ = Ex_thermal' / 1000;
+Water_Flow = m_dot_water';
+
+T = table(Stage, T_after_reheat, T_after_expansion, P_out_bar, ...
+          W_exp_kJ, Ex_thermal_kJ, Water_Flow);
+disp(T);
+
+%% ============== PLOTS: TEMPERATURE & PRESSURE =================
+figure;
+plot(Stage, T_after_reheat, 'ro-', Stage, T_after_expansion, 'bo-', 'LineWidth', 2);
+xlabel('Expansion Stage'); ylabel('Temperature [K]');
+legend('After Reheat', 'After Expansion');
+title('Temperature after Reheat and Expansion');
+grid on;
+
+figure;
+plot(Stage, P_in / 1e5, 'ro-', Stage, P_out / 1e5, 'bo-', 'LineWidth', 2);
+xlabel('Expansion Stage'); ylabel('Pressure [bar]');
+legend('Before Expansion', 'After Expansion');
+title('Pressure per Stage');
+grid on;
