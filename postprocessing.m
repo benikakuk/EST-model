@@ -5,7 +5,7 @@ close all;
 figure;
 
 %% Supply and demand
-subplot(2,2,1);
+subplot(3,2,1);
 plot(tout/unit("day"), PSupply/unit("W"));
 hold on;
 plot(tout/unit("day"), -PDemand/unit("W"));
@@ -17,7 +17,7 @@ ylabel('Power [W]');
 legend("Supply","Demand");
 
 %% Stored energy
-subplot(2,2,2);
+subplot(3,2,2);
 plot(tout/unit("day"), EStorage/unit("J"));
 xlim([0 tout(end)/unit("day")]);
 grid on;
@@ -26,7 +26,7 @@ xlabel('Time [day]');
 ylabel('Energy [J]');
 
 %% Energy losses
-subplot(2,2,3);
+subplot(3,2,3);
 plot(tout/unit("day"), D/unit("W"));
 xlim([0 tout(end)/unit("day")]);
 grid on;
@@ -35,7 +35,7 @@ xlabel('Time [day]');
 ylabel('Dissipation rate [W]');
 
 %% Load balancing
-subplot(2,2,4);
+subplot(3,2,4);
 plot(tout/unit("day"), PSell/unit("W"));
 hold on;
 plot(tout/unit("day"), -PBuy/unit("W"));
@@ -126,7 +126,7 @@ components = {'Supply', 'Injection', 'Storage', 'Extraction', 'Demand'};
 
 subplot(3,2,5);
 figure;
-plot(efficiency_components, 'LineWidth', 2);
+plot(components, efficiency_components, 'LineWidth', 2);
 set(gca, 'XTick', 1:5, 'XTickLabel', components);
 xlabel('Component'); ylabel('Efficiency [%]');
 legend('Efficiency');
