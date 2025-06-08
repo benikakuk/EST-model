@@ -108,3 +108,27 @@ xlabel('Expansion Stage'); ylabel('Pressure [bar]');
 legend('Before Expansion', 'After Expansion');
 title('Pressure per Stage');
 grid on;
+%% ============== PLOTS: EFFICIENCYS AND COMPONENTS ==============
+
+%finding the efficiencies 
+
+efficiency_supply_transport = (PfromSupplyTransport / PtoSupplyTransport) * 100;
+efficiency_injection = (PfromInjection / PtoInjection) * 100;
+efficiency_storage = (EStorage / PtoStorage) * 100;
+efficiency_extraction = (PtoExtraction / PfromExtraction) * 100;
+efficiency_demand_transport = (PtoDemandTransport / PfromDemandTransport) * 100;
+
+efficiency_components = [efficiency_supply_transport, efficiency_injection, efficiency_storage, ...
+    efficiency_extraction, efficiency_demand_transport];
+components = {'Supply', 'Injection', 'Storage', 'Extraction', 'Demand'};
+
+%plotting them
+
+subplot(3,2,5);
+figure;
+plot(efficiency_components, 'LineWidth', 2);
+set(gca, 'XTick', 1:5, 'XTickLabel', components);
+xlabel('Component'); ylabel('Efficiency [%]');
+legend('Efficiency');
+title('Efficiency of each component');
+grid on;
