@@ -76,10 +76,10 @@ title(sprintf("Delivered energy %3.2e [J]", EtoDemandTransport/unit('J')));
 
 %% ============== DISPLAY RESULTS Expansion ===========================================================================
 fprintf('=== SYSTEM OUTPUTS ===\n');
-fprintf('Total Power Delivered (PtoExtraction): %.2f kW\n', PtoExtraction);
-fprintf('Power Deficit (DExtraction): %.2f kW\n', DExtraction);
-fprintf('Air Mass Flow Rate: %.3f kg/s\n', m_dot_air);
-fprintf('Total Cooling Water Flow: %.3f kg/s\n\n', m_dot_water_total);
+%fprintf('Total Power Delivered (PtoExtraction): %.2f kW\n', PtoExtraction);
+%fprintf('Power Deficit (DExtraction): %.2f kW\n', DExtraction);
+%fprintf('Air Mass Flow Rate: %.3f kg/s\n', m_dot_air);
+%fprintf('Total Cooling Water Flow: %.3f kg/s\n\n', m_dot_water_total);
 
 %% ============== TABULATE STAGE-WISE OUTPUTS ===================
 Stage = (1:3)';  % Adjust if different number of stages
